@@ -1,0 +1,20 @@
+{% load static %}
+
+<section class="products">
+    {% if products %}
+        {% for product in products %}
+            <article class="product">
+                <!-- Предполагаем, что у продукта есть изображение, название и цена -->
+                <img src="{% static 'photos/snowboard_default.jpg' %}" alt="{{ product.title }}">
+                <h2>{{ product.title }}</h2>
+                <p>Описание: {{ product.description }}</p>
+                <span class="price">Цена: {{ product.price }} ₽</span>
+                <a href="/product/{{ product.id }}">Перейти к товару</a>
+                <!-- Дополнительные детали продукта -->
+            </article>
+        {% endfor %}
+    {% else %}
+        <p>Товары по заданным критериям не найдены.</p>
+    {% endif %}
+</section>
+    

@@ -1,0 +1,178 @@
+<head>
+    <meta charset="UTF-8">
+    <title>{{ product.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/show_product.css' %}">
+</head>
+
+{% block extra_css %}
+<style>
+    textarea {
+        font-family:monospace;
+    }
+    /* Добавьте дополнительные стили здесь, если необходимо */
+</style>
+{% endblock %}
+{% include 'menu.html' %}
+{% block content %}
+<div class="row content-container"> <!-- обернул весь блок контента классом content-container -->
+    <div class="col">
+        <form>
+            <fieldset disabled>
+                <div class="form-group row">
+                    <div class="col col-8">
+                        {{ addform.title.label }}: {{ addform.title }}
+                    </div>
+                    <div class="col col-4">
+                        Продавец: <a href="/profile/{{ seller.id}}">{{ seller }}</a>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col col-8">
+                        {% if image.url %}
+                            <img src="{{ image.url }}" alt="Фото товара" width=600 height=400 object-fit="cover">
+                        {% else %}
+                            <img src="media/product_img/snowboard_deafult.jpg" alt="Фото товара" style="width: 100%">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col">
+                        {{ addform.description.label }}: {{ addform.description }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col">
+                        {{ addform.price.label }}: {{ addform.price }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col">
+                        {{ addform.type.label }}: {{ addform.type}}
+                    </div>
+                </div>
+                {% if is_ski %}
+                <div class="form-group row">
+                    <div class="col">
+                        Ростовка: {{ rost }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col">
+                        Брэнд: {{ brand }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col">
+                        Стиль катания: {{ ridingstyle }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col">
+                        Уровень подготовки: {{ leveloftraining }}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if is_snowboard %}
+                <div class="form-group row">
+                    <div class="col">
+                        Ростовка: {{ rost }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col">
+                        Жёсткость: {{ zhest }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col">
+                        Прогиб: {{ progib }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col">
+                        Брэнд: {{ brand }}
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="form-group row">
+                    <div class="col">
+                        {% if if_purchased %}
+                            <p class="availability">Куплен</p>
+                        {% else %}
+                        {% if addform.available %}
+                            <p class="availability">Есть в наличии</p> <!-- класс для стилизации наличия -->
+                        {% else %}
+                            <p class="availability not-available">Нет в наличии</p> <!-- добавлен класс для стилизации отсутствия -->
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        {% if not is_seller and not if_purchased %}
+            <form action="/BuyProduct/{{ id }}" method="post" class="buy-form">
+                {% csrf_token %}
+                <button type="submit">Купить</button>
+            </form>
+        {% endif %}
+        {% if not if_purchased %}
+        <button id="buy_button" onclick="bshow()">Добавить комментарий</button>
+        <div class="hidden" id='buy_form'> <!-- скрытая форма для добавления комментария -->
+            <form action="/AddComment/{{ id }}" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit">Добавить</button>
+            </form>
+        </div>
+        {% endif %}
+        <div class="comment-section"> <!-- обернуть комментарии в comment-section -->
+            {% for comment, tuple in comments.items %}
+            <div class="comment"> <!-- блок для комментария -->
+                <p class="username">{{ comment.user.username }}</p>
+                <span class="text">{{ comment.text }}</span>
+                <button id="ans_button_{{ comment.id }}" onclick="show({{ comment.id }})">Ответить</button>
+                {% if not if_purchased %}
+                    <div class="hidden" id="ans_form_{{ comment.id }}"> <!-- скрытая форма для ответа -->
+                        <form action="/AddAnswer/{{ id }}" method="post">
+                            {% csrf_token %}
+                            {{ tuple.form }}
+                            <button type="submit">Ответить</button>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+            <ul>
+                {% for answer in tuple.answers %}
+                <li class="answer"> <!-- блок для ответа -->
+                    <p class="username">{{ answer.user.username }}</p>
+                    <span class="text">{{ answer.text }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<script>
+    // Ваши функции JavaScript остаются неизменными
+    function show(id) {
+        document.getElementById('ans_form_' + id).style.display = 'block';
+        document.getElementById('ans_button_' + id).style.display = 'none';
+    }
+    function hide(id) {
+        document.getElementById('ans_form_' + id).style.display = 'none';
+        document.getElementById('ans_button_' + id).style.display = 'block';
+    }
+    function bshow() {
+        document.getElementById('buy_form').style.display = 'block';
+        document.getElementById('buy_button').style.display = 'none';
+    }
+    function bhide() {
+        document.getElementById('buy_form').style.display = 'none';
+        document.getElementById('buy_button' + id).style.display = 'block';
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление товара</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/creation_of_the_lot.css' %}">
+</head>
+<body>
+<div class="product-form-container">
+    <h2>Добавление нового товара</h2>
+    <form id="AddProductForm" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="productName">Название товара:</label>
+            <input type="text" id="productName" name="productName" required>
+        </div>
+        <div class="form-group">
+            <label for="productType">Категория товара:</label>
+            <select id="productType" name="productType" required>
+                <option value="">Выберите категорию товара</option>
+                <option value="skis">Лыжи</option>
+                <option value="snowboard">Сноуборд</option>
+            </select>
+        </div>
+        <!-- Placeholder for skis options -->
+        <div id="skisOptions" class="form-group" style="display:none;">
+            <label for="skisOptions">Характеристики:</label>
+            <select id="skisrost" name="skisrost" required>
+                <option value="">Выберите ростовку:</option>
+                <option value="205-210">205-210 см</option>
+                <option value="200-205">200-205 см</option>
+                <option value="195-200">195-200 см</option>
+                <option value="190-195">190-195 см</option>
+                <option value="185-190">185-190 см</option>
+                <option value="180-185">180-185 см</option>
+                <option value="175-180">175-180 см</option>
+                <option value="170-175">170-175 см</option>
+                <option value="165-170">165-170 см</option>
+                <option value="160-165">160-165 см</option>
+                <option value="155-160">155-160 см</option>
+                <option value="150-155">150-155 см</option>
+                <option value="145-150">145-150 см</option>
+                <option value="140-145">140-145 см</option>
+                <option value="135-140">135-140 см</option>
+                <option value="130-135">130-135 см</option>
+                <option value="125-130">125-130 см</option>
+                <option value="120-125">120-125 см</option>
+                <option value="110-120">110-120 см</option>
+                <option value="100-110">100-110 см</option>
+                <option value="90-100">90-100 см</option>
+                <option value="80-90">80-90 см</option>
+                <option value="меньше 80">меньше 80 см</option>
+            </select>
+            <p></p>
+            <select id="skisbrand" name="skisbrand" required>
+                <option value="">Выберите брэнд:</option>
+                <option value="FISCHER">FISCHER</option>
+                <option value="Hamax">Hamax</option>
+                <option value="KARHU">KARHU</option>
+                <option value="Kastle">Kastle</option>
+                <option value="KV+">KV+</option>
+                <option value="ONSKI">ONSKI</option>
+                <option value="Proteam">Proteam</option>
+                <option value="ROSSIGNOL">ROSSIGNOL</option>
+                <option value="SALOMON">SALOMON</option>
+                <option value="SKITRAB">SKITRAB</option>
+                <option value="SPINE">SPINE</option>
+                <option value="STC">STC</option>
+                <option value="TISA">TISA</option>
+                <option value="YOKO">YOKO</option>
+            </select>
+            <p></p>
+            <select id="skisridingstyle" name="skisridingstyle" required>
+                <option value="">Выберите стиль катания:</option>
+                <option value="classic">Классический</option>
+                <option value="skating">Коньковый</option>
+                <option value="combined">Комбинированный</option>
+            </select>
+            <p></p>
+            <select id="skisleveloftraining" name="skisleveloftraining">
+                <option value="">Выберите уровень подготовки</option>
+                <option value="beginner">Начинающий</option>
+                <option value="advanced">Продвинутый</option>
+                <option value="professional">Профессионал</option>
+            </select>
+        </div>
+        <!-- Placeholder for snowboard options -->
+        <div id="snowboardOptions" class="form-group" style="display:none;">
+            <label for="snowboardOptions">Характеристики:</label>
+            <select id="snowboardrost" name="snowboardrost" required>
+                <option value="">Выберите ростовку:</option>
+                <option value="130-145">130-145</option>
+                <option value="125-135">125-135</option>
+                <option value="115-130">115-130</option>
+                <option value="110-125">110-125</option>
+                <option value="105-120">105-120</option>
+                <option value="100-110">100-110</option>
+                <option value="95-105">95-105</option>
+                <option value="85-95">85-95</option>
+                <option value="80-90">80-90</option>
+                <option value="меньше 80">min80</option>
+            </select>
+            <p></p>
+            <select id="snowboardzhest" name="snowboardzhest" required>
+                <option value="">Выберите жёсткость:</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <p></p>
+            <select id="snowboardprogib" name="snowboardprogib" required>
+                <option value="">Выберите прогиб:</option>
+                <option value="camber">camber</option>
+                <option value="rocker">rocker</option>
+                <option value="flat">flat</option>
+                <option value="FlyingV">FlyingV</option>
+            </select>
+            <p></p>
+            <select id="snowboardbrand" name="snowboardbrand">
+                <option value="">Выберите бренд</option>
+                <option value="Head">Head</option>
+                <option value="K2">K2</option>
+                <option value="Atomic">Atomic</option>
+                <option value="Dynastar">Dynastar</option>
+                <option value="Elan">Elan</option>
+                <option value="Rossignol">Rossignol</option>
+                <option value="Salomon">Salomon</option>
+                <option value="Volkl">Volkl</option>
+                <option value="Scott">Scott</option>
+                <option value="Hammer">Hammer</option>
+                <option value="Apo">Apo</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="productDescription">Описание товара:</label>
+            <textarea id="productDescription" name="productDescription" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="productPhoto">Фотографии товара:</label>
+            <input type="file" id="productPhoto" name="productPhoto" accept="image/*">
+        </div>
+        <div class="form-group">
+            <label for="productPrice">Цена товара:</label>
+            <input type="number" id="productPrice" min="0" name="productPrice" required>
+        </div>
+        <button type="submit">Добавить товар</button>
+        <a href="javascript:history.back()" class="back_link">Назад</a>
+    </form>
+</div>
+
+<script>
+
+    document.getElementById('productType').addEventListener('change', function() {
+      var skisOptions = document.getElementById('skisOptions');
+      var snowboardOptions = document.getElementById('snowboardOptions');
+      // Получаем все селекты внутри skisOptions и snowboardOptions
+      var allSkisSelects = skisOptions.querySelectorAll('select');
+      var allSnowboardSelects = snowboardOptions.querySelectorAll('select');
+
+      // Функция для установки атрибута required для всех селектов в контейнере
+      function setRequiredForSelects(selects, value) {
+        selects.forEach(function(select) {
+          select.required = value;
+        });
+      }
+
+      if (this.value === 'skis') {
+        skisOptions.style.display = 'block';
+        snowboardOptions.style.display = 'none';
+        setRequiredForSelects(allSkisSelects, true); // Делаем поля лыж обязательными
+        setRequiredForSelects(allSnowboardSelects, false); // Снимаем обязательность с полей сноубордов
+      } else if (this.value === 'snowboard') {
+        skisOptions.style.display = 'none';
+        snowboardOptions.style.display = 'block';
+        setRequiredForSelects(allSkisSelects, false);
+        setRequiredForSelects(allSnowboardSelects, true);
+      } else {
+        skisOptions.style.display = 'none';
+        snowboardOptions.style.display = 'none';
+        setRequiredForSelects(allSkisSelects, false);
+        setRequiredForSelects(allSnowboardSelects, false);
+      }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>Пользователь: {{ coment.user.username }}</p>
+    <p>Продукт: {{ coment.product.title }}</p>
+    <p>{{ coment.text }}</p>
+    <p>Ответы: </p>
+    <ul>
+        {% for answer in answers %}
+        <li>
+            <p>Пользователь: {{ answer.user.username }}</p>
+            <p>{{ answer.text }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

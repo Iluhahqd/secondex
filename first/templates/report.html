@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Жалоба</title>
+</head>
+<body>
+    <p>Никнейм пользователя: {{ seller.username }}</p>
+    <p>Цена товара: {{ product.price }}₽</p>
+    <form action="#" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <p><button type="submit">Отправить</button></p>
+    </form>
+</body>
+</html>

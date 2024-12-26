@@ -1,0 +1,212 @@
+/* Ниже представлен CSS, который стилизует только содержание страницы, не затрагивая верхнюю навигационную панель */
+
+/* Стили для основного контента */
+/*.content-container {*/
+/*    background-color: #fff;*/
+/*    margin: 20px auto;*/
+/*    padding: 20px;*/
+/*    border-radius: 8px;*/
+/*    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+/*    max-width: 960px;*/
+/*}*/
+
+/* Стили для форм и полей */
+form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.form-group{
+    margin-bottom: 15px;
+}
+.form-photo{
+    margin-left: 800px;
+    height: 100px;
+    width: 100px;
+    margin-top: 200px;
+}
+label, p {
+    display: block;
+    margin: 0;
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* Для того чтобы padding не увеличивал размер элементов */
+}
+.photoo {
+    width:600;
+    height:400;
+    object-fit:cover;
+}
+.photot{
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 390px;
+    height: 400px;
+}
+button {
+    background-color: #5cb85c; /* Зеленый цвет кнопки */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #449d44; /* Темно-зеленый цвет при наведении */
+}
+
+/* Стили для текста о наличии товара */
+.availability {
+    color: #5cb85c; /* Текст подтверждения наличия будет в зеленом цвете */
+    font-weight: bold;
+}
+
+/* Стилизация комментариев и ответов */
+.comment-section {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.comment {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.comment .username {
+    font-weight: bold;
+    color: #333;
+}
+
+.comment .text {
+    color: #666;
+    margin-top: 5px;
+}
+
+.answer {
+    padding-left: 20px;
+    border-left: 3px solid #5cb85c; /* Линия для визуального разделения ответов */
+}
+
+.answer .username {
+    font-weight: bold;
+    color: #285e28; /* Цвет имени пользователя в ответах */
+}
+
+/* Скрытые элементы по умолчанию */
+.hidden {
+    display: none;
+}
+
+/* Видимые элементы при определенном условии */
+.visible {
+    display: block;
+}
+/* Ниже представлен CSS, который стилизует только содержание страницы, не затрагивая верхнюю навигационную панель */
+
+/* Стили для основного контента */
+.content-container {
+    background-color: #fff;
+    margin-top: 105px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 960px;
+}
+
+label, p {
+    display: block;
+    margin: 0;
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* Для того чтобы padding не увеличивал размер элементов */
+}
+
+button {
+    background-color: #5cb85c; /* Зеленый цвет кнопки */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #449d44; /* Темно-зеленый цвет при наведении */
+}
+
+/* Стили для текста о наличии товара */
+.availability {
+    color: #5cb85c; /* Текст подтверждения наличия будет в зеленом цвете */
+    font-weight: bold;
+}
+
+/* Стилизация комментариев и ответов */
+.comment-section {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.comment {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.comment .username {
+    font-weight: bold;
+    color: #333;
+}
+
+.comment .text {
+    color: #666;
+    margin-top: 5px;
+}
+
+.answer {
+    padding-left: 20px;
+    border-left: 3px solid #5cb85c; /* Линия для визуального разделения ответов */
+}
+
+.answer .username {
+    font-weight: bold;
+    color: #285e28; /* Цвет имени пользователя в ответах */
+}
+
+/* Скрытые элементы по умолчанию */
+.hidden {
+    display: none;
+}
+
+/* Видимые элементы при определенном условии */
+.visible {
+    display: block;
+}

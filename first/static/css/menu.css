@@ -1,0 +1,350 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    margin-bottom: 100px;
+    padding: 0;
+    background-color: #eaeaea;
+    color: #333;
+    line-height: 1.6;
+}
+
+.containers {
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header {
+    background: #000000;
+    color: #ffffff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: 3px solid #00ffda;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+nav ul li a:hover, nav ul li a:focus {
+    background-color: #00ffda;
+    color: #ffffff;
+}
+
+body {
+    padding-top: 120px; /* Убедитесь, что контент страницы не перекрывается навигационной панелью */
+}
+
+.main-banner {
+    background-color: #00ffda;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+ul {
+    padding: 20px;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #00ffda;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+blockquote {
+    font-style: italic;
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 20px;
+    padding: 15px;
+}
+
+section {
+    background: #ffffff;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.hover-links {
+    display: none;
+    position: absolute;
+    min-width: 100px;
+    z-index: 1;
+    padding: 5px;
+}
+
+.hover-links a {
+    background-color: black;
+    text-align: center;
+    border: 2px solid white;
+    margin: 2px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 2px 5px;
+}
+
+.profile:hover .hover-links {
+    display: block;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  margin-right: 20px;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.search-bar input[type="search"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.find-btn {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.find-btn:hover {
+  background-color: #3e8e41;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-right: 20px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: #ccc;
+}
+
+.profile-icon,.cart-icon,.heart-icon {
+  font-size: 20px;
+}
+
+.login-btn,.logout-btn {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-btn:hover,.logout-btn:hover {
+  background-color: #3e8e41;
+}
+
+.logout-btn {
+  display: none;
+}
+/* Add snowflakes */
+/* Define CSS variables */
+:root {
+  --primary-color: #333;
+  --secondary-color: #eaeaea;
+  --snowflake-size: 20px;
+  --snowflake-opacity: 0.5;
+}
+
+/* Global styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  line-height: 1.6;
+}
+
+/* Snowflake styles */
+.snowflakes-container {
+  position: static;
+  width: 80%; /* Ограничиваем зону до 80% ширины экрана */
+  height: 80%; /* Ограничиваем зону до 80% высоты экрана */
+  margin-top: auto; /* Центрируем контейнер по горизонтали */
+}
+
+.snowflake {
+  opacity: 0.4;
+  position: absolute;
+  top: -100px;
+  left: -50px;
+  width: 20px;
+  height: 20px;
+  animation: snowflake 15s linear infinite;
+}
+
+
+.snowflake:nth-child(1) {
+  top: -100px;
+  left: 5%;
+  animation-duration: 4s;
+  animation-delay: 0s;
+}
+
+.snowflake:nth-child(2) {
+  top: -100px;
+  left: 20%;
+  animation-duration: 4s;
+  animation-delay: 0.5s;
+}
+
+.snowflake:nth-child(3) {
+  top: -100px;
+  left: 70%;
+  animation-duration: 4s;
+  animation-delay: 1s;
+}
+
+.snowflake:nth-child(4) {
+  top: -100px;
+  left: 30%;
+  animation-duration: 4s;
+  animation-delay: 1.5s;
+}
+
+.snowflake:nth-child(5) {
+  top: -100px;
+  left: 65%;
+  animation-duration: 4s;
+  animation-delay: 2s;
+}
+
+.snowflake:nth-child(6) {
+  top: -100px;
+  left: 80%;
+  animation-duration: 4s;
+  animation-delay: 2.5s;
+}
+
+.snowflake:nth-child(7) {
+  top: -100px;
+  left: 10%;
+  animation-duration: 4s;
+  animation-delay: 3s;
+}
+
+.snowflake:nth-child(8) {
+  top: -100px;
+  left: 45%;
+  animation-duration: 4s;
+  animation-delay: 3.5s;
+}
+
+.snowflake:nth-child(9) {
+  top: -100px;
+  left: 25%;
+  animation-duration: 4s;
+  animation-delay: 4s;
+}
+.snowflake:nth-child(10) {
+  top: -100px;
+  left: 70%;
+  animation-duration: 4s;
+  animation-delay: 4s;
+}
+.snowflake:nth-child(11) {
+  top: -100px;
+  left: 90%;
+  animation-duration: 4s;
+  animation-delay: 4s;
+}
+.snowflake:nth-child(12) {
+  top: -100px;
+  left: 35%;
+  animation-duration: 4s;
+  animation-delay: 4s;
+}
+.snowflake:nth-child(13) {
+  top: -100px;
+  left: 55%;
+  animation-duration: 4s;
+  animation-delay: 4s;
+}
+.snowflake:nth-child(14) {
+  top: -100px;
+  left: 65%;
+  animation-duration: 4s;
+  animation-delay: 4s;
+}
+.snowflake:nth-child(15) {
+  top: -100px;
+  left: 85%;
+  animation-duration: 4s;
+  animation-delay: 4s;
+}
+@keyframes snowflake {
+  0% {
+    transform: translate(0, 100%) rotate(0deg);
+  }
+  100% {
+    transform: translate(100%, 1000%) rotate(360deg);
+  }
+}

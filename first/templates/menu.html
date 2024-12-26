@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Navigation Bar</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+</head>
+<body>
+
+    <header>
+        <div class="snowflakes-container">
+            <div class="snowflakes">
+                <img src="/static/photos/snowflake.png" class="snowflake">
+                <img src="/static/photos/snowflake.png" class="snowflake">
+                <img src="/static/photos/snowflake.png" class="snowflake">
+                <img src="/static/photos/snowflake.png" class="snowflake">
+                <img src="/static/photos/snowflake.png" class="snowflake">
+                <img src="/static/photos/snowflake.png" class="snowflake">
+                <img src="/static/photos/snowflake.png" class="snowflake">
+                <img src="/static/photos/snowflake.png" class="snowflake">
+                <img src="/static/photos/snowflake.png" class="snowflake">
+                <img src="/static/photos/snowflake.png" class="snowflake">
+                <img src="/static/photos/snowflake.png" class="snowflake">
+                <img src="/static/photos/snowflake.png" class="snowflake">
+                <img src="/static/photos/snowflake.png" class="snowflake">
+                <img src="/static/photos/snowflake.png" class="snowflake">
+                <img src="/static/photos/snowflake.png" class="snowflake">
+            </div>
+        </div>
+        <div class="containers">
+            <nav class="nav-main">
+                <ul>
+                    <li><a href="/"><img src="/static/photos/logo.png" alt="Логотип" style="height: 18px; filter: invert(100%); transform: scale(3);margin-right: 10"></a></li>
+<!--                    <form action="#" method="post" class="form-find" name="formFind">-->
+<!--                        {% csrf_token %}-->
+<!--                        {{ form }}-->
+<!--                    </form>-->
+                </ul>
+
+            </nav>
+            <nav class="nav-user">
+                <ul>
+                    {% if not user.is_authenticated %}
+                        <li><a href="/input">Войти</a></li>
+                        <li><a href="/registration">Регистрация</a></li>
+                    {% else %}
+                        <li class="profile">
+                            <a href="/profile" class="profile-link"><i class="fas fa-user"></i></a>
+                            <div class="hover-links">
+                                <a href="/input" class="hover-link">Войти в другой аккаунт</a>
+                                <a href="/logout" class="hover-link">Выйти</a>
+                            </div>
+                        </li>
+                        <li><a href="/cart"><i class="fas fa-shopping-cart"></i></a></li>
+                        <li><a href="/favorites"><i class="fas fa-heart"></i></a></li>
+{#                        <li><a href="/logout">Выйти</a></li>#}
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+</body>
+</html>

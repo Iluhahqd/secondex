@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+    {% include 'menu.html' %}
+    <div class="block">
+        <h1>Профиль</h1>
+        <img src="{{ image.url }}" style="width: 70%; border-radius: 50%;">
+        <h2>Логин: {{ username }}</h2>
+        <h4>Рейтинг: {{ rating }}</h4>
+        <h4>Почта: {{ email }}</h4>
+        <h4>Номер телефона: {{ phone_number }}</h4>
+
+        <h3>Редактирование профиля</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" name="change_data">Изменить</button>
+        </form>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ img_form.as_p }}
+            <button type="submit" name="change_image">Изменить</button>
+        </form>
+
+        <h3>Изменение пароля</h3>
+        <button><a href="/profile/password_change/">Изменить пароль</a></button>
+    </div>
+    <div class="block">
+        <h1>Ваши товары</h1>
+        {% if sale_products %}
+        <ul>
+            {% for product in sale_products %}
+                <article class="product">
+                    <img src="{{ product.image.url }}" alt='Фото товара "{{ product.title }}"'>
+                    <h2>{{ product.title }}</h2>
+                    <form method="POST">
+                        {% csrf_token %}
+                    </form>
+    <!--                <p>{{ product.description }}</p>-->
+                    <span class="price">Цена: {{ product.price }} ₽</span>
+                    <a href="/product/{{ product.id }}" class="goto-product-btn">Перейти к товару</a>
+                </article>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Товаров пока нет</p>
+        {% endif %}
+    </div>
+    <div class="block">
+        <h1>Купленные товары</h1>
+        {% if purchased_products %}
+        <ul>
+            {% for product in purchased_products %}
+                <article class="product">
+                    <img src="{{ product.image.url }}" alt='Фото товара "{{ product.title }}"'>
+                    <h2>{{ product.title }}</h2>
+                    <form method="POST">
+                        {% csrf_token %}
+                    </form>
+    <!--                <p>{{ product.description }}</p>-->
+                    <span class="price">Цена: {{ product.price }} ₽</span>
+                    <a href="/product/{{ product.id }}" class="goto-product-btn">Перейти к товару</a>
+                </article>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Товаров пока нет</p>
+        {% endif %}
+    </div>
+</body>
+</html>

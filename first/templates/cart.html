@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title>Корзина</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+
+</head>
+<body>
+{% include 'menu.html' %}
+<form action="/BuyProducts/" method="post" class="buy-form">
+    {% csrf_token %}
+    <button type="submit" class="buy-btn" id="add_product">
+        <p>Итого с вас: {{ sum }}</p>
+        <br>
+        <p>Купить всё</p>
+    </button>
+</form>
+
+{% if cnt == 0 %}
+<h1>Ваша корзина пуста.</h1>
+{% else %}
+
+<div class="favorites">
+    {% for product in products %}
+    <article class="product">
+        <img src="{{ product.image.url }}" alt='Фото товара "{{ product.title }}"'>
+        <h2>{{ product.title }}</h2>
+        <form method="POST">
+            {% csrf_token %}
+        </form>
+        <!--                <p>{{ product.description }}</p>-->
+        <span class="price">Цена: {{ product.price }} ₽</span>
+        <a href="/product/{{ product.id }}" class="goto-product-btn">Перейти к товару</a>
+        <a>
+            <button class="delete-product-btn" onclick="del_from_cart({{product.id}}, {{user_id}})">
+                        Убрать
+            </button>
+        </a>
+
+    </article>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% include 'footer.html' %}
+<script src="{% static 'js/cart.js' %}"></script>
+</body>
+</html>
